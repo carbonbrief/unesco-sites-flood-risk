@@ -17,6 +17,7 @@ body {
 .session {
     display: inline-block;
     width: calc(50% - 10px);
+    vertical-align: top;
 }
 
 #adb {
@@ -31,7 +32,7 @@ body {
 
 #console {
     position: relative;
-    width: 100%;
+    width: calc(100% - 20px);
     height: auto;
     background-color: #333333;
     color: #FFFFFF;
@@ -47,6 +48,21 @@ body {
 .row {
     height: 12px;
     width: calc(100% - 20px);
+}
+
+.key {
+    height: 12px;
+    width: calc(100% - 50px);
+    margin-top: 5px;
+}
+
+#key-wrapper > div {
+    display: inline-block;
+}
+
+#key-wrapper p {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 h1 {
@@ -80,7 +96,7 @@ h3 {
 
 h2 {
     color: #7fcdbb;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .instructions {
@@ -133,6 +149,11 @@ input[type=radio] {
   position: absolute;
 }
 
+form[name=rcps] {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
 input[type=radio] + label:before{
   height:12px;
   width:12px;
@@ -154,4 +175,22 @@ input[type=radio]:checked + label:before{
 
 input[type=radio] + label:before{
     border-radius:50%;
+}
+
+.logo {
+    z-index: 3;
+    opacity: 0.8;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 548px;
+    right: 9px;
+    height: 27px;
+    width: 27px;
+    background-image:url(../img/logo-mobile.svg);
+}
+
+@media screen and (min-width: 830px) {
+    .logo {
+        left: 795px;
+    }
 }

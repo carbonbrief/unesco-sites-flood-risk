@@ -22,9 +22,6 @@
                 <p class="instructions">Drag the slider to see how flood risk is projected to change</p>
                 <h2>Year: <label id='active-year'>2050</label></h2>
                 <input id='slider' autocomplete="off" class='row' type='range' min='2000' max='2100' step='10' value='2050' />
-            </div>
-            <div class='session'>
-                <div class='row colors'></div>
                 <h2>Scenario: <label id='active-scenario'>RCP2.6</label></h2>
                 <form name="rcps">
                     <input type="radio" id="rcp26"
@@ -40,7 +37,16 @@
                     <label for="rcp85">RCP 8.5</label>
                 </form>
             </div>
+            <div class='session'>
+                <h2>Flooding risk index</h2>
+                <div id='key-wrapper'>
+                    <div><p>0</p></div>
+                    <div class='key colors'></div>
+                    <div><p>10</p></div>
+                </div>
+            </div>
         </div>
+        <div class="logo"></div>
         <script src="js/script.js"></script>
     </body>
 </html>
