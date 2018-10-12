@@ -25,7 +25,7 @@ var map = new mapboxgl.Map({
             "maxzoom": 22
         }]
     },
-    center: [15, 40],
+    center: [15.5, 39],
     zoom: 3.7,
     maxZoom: 8
 });
@@ -45,7 +45,7 @@ map.on('load', function() {
           data: './data/sites.geojson'
         },
         paint: {
-            'circle-radius': 5.5,
+            'circle-radius': 6,
             'circle-color': {
                 property: 'index',
                 type: 'exponential', // base defaults to 1
@@ -65,7 +65,7 @@ map.on('load', function() {
             },
             'circle-opacity': 1,
             'circle-stroke-color': '#999999',
-            'circle-stroke-width': 0.6,
+            'circle-stroke-width': 0.8,
             'circle-stroke-opacity': 0.9
         },
         'filter': ['all', filterYear, filterRCP]    // filter for start and end year AND make sure that start year is less than 2018 (filterYear5)

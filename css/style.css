@@ -33,3 +33,13 @@ body {
     border: solid 0.1px grey;
     padding: 10px;
 }
+
+.colors {
+    background: linear-gradient(to right, #FFFFD9, #F6FBC5, #EDF8B1, #DAF0B2, #C7E9B4, #7FCDBB, #41B6C4, #1D91C0, #225EA8, #253494, #081D58 );
+    border: #999999 solid 0.8px;
+}
+
+.row {
+    height: 12px;
+    width: calc(50% - 20px);
+}
