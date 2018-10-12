@@ -195,6 +195,11 @@ input[type=radio] + label:before{
     .logo {
         left: 795px;
     }
+
+    #adb {
+        margin-left: 200px;
+        width: 200px;
+    }
 }
 
 @media screen and (max-width: 500px) {
