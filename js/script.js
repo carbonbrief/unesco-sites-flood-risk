@@ -38,7 +38,7 @@ var filterYear = ['==', ['number', ['get', 'year']], 2050];
 map.on('load', function() {
 
     map.addLayer({
-        id: 'operating',
+        id: 'sites',
         type: 'circle',
         source: {
           type: 'geojson',
@@ -69,6 +69,18 @@ map.on('load', function() {
             'circle-stroke-opacity': 0.9
         },
         'filter': ['all', filterYear, filterRCP]    // filter for start and end year AND make sure that start year is less than 2018 (filterYear5)
+    });
+
+    document.getElementById('slider').addEventListener('input', function(e) {
+
+        var year = parseInt(e.target.value);
+
+        filterYear = ['==', ['number', ['get', 'year']], year];
+
+        map.setFilter('sites', ['all', filterYear, filterRCP]);
+
+        document.getElementById('active-year').innerText = year;
+
     });
 
 });
