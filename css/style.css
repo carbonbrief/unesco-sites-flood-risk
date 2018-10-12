@@ -40,7 +40,7 @@ body {
 }
 
 .colors {
-    background: linear-gradient(to right, #FFFFD9, #F6FBC5, #EDF8B1, #DAF0B2, #C7E9B4, #7FCDBB, #41B6C4, #1D91C0, #225EA8, #253494, #081D58 );
+    background: linear-gradient(to right, #F6FBC5, #EDF8B1, #DAF0B2, #C7E9B4, #A3DBB7, #7FCDBB, #41B6C4, #1D91C0, #225EA8, #253494, #081D58 );
     border: #999999 solid 0.8px;
 }
 
@@ -119,4 +119,39 @@ h2 {
 }
 .mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
   border-left-color: #383838;
+}
+
+form[name=rcps] label {    
+    color: #ffffff;
+    font-size: 12px;
+    margin-right: 9px;
+}
+
+input[type=radio] {
+    /* Hide original inputs */
+  visibility: hidden;
+  position: absolute;
+}
+
+input[type=radio] + label:before{
+  height:12px;
+  width:12px;
+  margin-right: 5px;
+  content: " ";
+  display:inline-block;
+  vertical-align: -10%;
+  border:1px solid #777;
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+input[type=radio]:checked + label:before{
+    height:8px;
+    width:8px;
+    border:3px solid #7fcdbb;
+  background: rgb(255, 255, 255);
+}
+
+input[type=radio] + label:before{
+    border-radius:50%;
 }

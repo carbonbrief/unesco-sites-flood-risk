@@ -25,7 +25,20 @@
             </div>
             <div class='session'>
                 <div class='row colors'></div>
-                <h2>Scenario: <label id='active-year'>RCP2.6</label></h2>
+                <h2>Scenario: <label id='active-scenario'>RCP2.6</label></h2>
+                <form name="rcps">
+                    <input type="radio" id="rcp26"
+                        name="rcp-radio" value="RCP2.6" checked="checked">
+                    <label for="rcp26">RCP 2.6</label>
+                
+                    <input type="radio" id="rcp45"
+                        name="rcp-radio" value="RCP4.5">
+                    <label for="rcp45">RCP 4.5</label>
+
+                    <input type="radio" id="rcp85"
+                        name="rcp-radio" value="RCP8.5">
+                    <label for="rcp85">RCP 8.5</label>
+                </form>
             </div>
         </div>
         <script src="js/script.js"></script>

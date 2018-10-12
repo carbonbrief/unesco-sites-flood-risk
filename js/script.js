@@ -27,8 +27,12 @@ var map = new mapboxgl.Map({
     },
     center: [15.5, 40],
     zoom: 3.7,
-    maxZoom: 8
+    maxZoom: 6,
+    minZoom: 3.5
 });
+
+// Add zoom and rotation controls to the map.
+map.addControl(new mapboxgl.NavigationControl({ showCompass: false }));
 
 // ADD DATA LAYER
 
@@ -50,11 +54,11 @@ map.on('load', function() {
                 property: 'index',
                 type: 'exponential', // base defaults to 1
                 stops: [
-                    [0, '#FFFFD9'],
-                    [1, '#F6FBC5'],
-                    [2, '#EDF8B1'],
-                    [3, '#DAF0B2'],
-                    [4, '#C7E9B4'],
+                    [0, '#F6FBC5'],
+                    [1, '#EDF8B1'],
+                    [2, '#DAF0B2'],
+                    [3, '#C7E9B4'],
+                    [4, '#A3DBB7'],
                     [5, '#7FCDBB'],
                     [6, '#41B6C4'],
                     [7, '#1D91C0'],
@@ -71,6 +75,8 @@ map.on('load', function() {
         'filter': ['all', filterYear, filterRCP]    // filter for start and end year AND make sure that start year is less than 2018 (filterYear5)
     });
 
+    // SLIDER INTERACTIONS
+
     document.getElementById('slider').addEventListener('input', function(e) {
 
         var year = parseInt(e.target.value);
@@ -82,6 +88,26 @@ map.on('load', function() {
         document.getElementById('active-year').innerText = year;
 
     });
+
+    // RADIO BUTTON INTERACTIONS
+
+    var radios = document.getElementsByName('rcp-radio');
+
+    for(var i = 0, max = radios.length; i < max; i++) {
+        radios[i].onclick = function() {
+
+            var scenario = this.value;
+
+            filterRCP = ['==', ['string', ['get', 'scenario']], scenario];
+
+            map.setFilter('sites', ['all', filterYear, filterRCP]);
+
+            document.getElementById('active-scenario').innerText = scenario;
+
+        }
+    }
+
+    // HOVER ACTIONS
 
     // Create a popup, but don't add it to the map yet.
     var popup = new mapboxgl.Popup({
