@@ -26,14 +26,14 @@ var map = new mapboxgl.Map({
         }]
     },
     center: [15, 40],
-    zoom: 3.5,
+    zoom: 3.7,
     maxZoom: 8
 });
 
 // ADD DATA LAYER
 
-// var filterRCP = ['==', ['string', ['get', 'scenario']], 'RCP2.6'];
-// var filterYear = ['==', ['string', ['get', 'year']], '2000'];
+var filterRCP = ['==', ['string', ['get', 'scenario']], 'RCP2.6'];
+var filterYear = ['==', ['number', ['get', 'year']], 2050];
 
 map.on('load', function() {
 
@@ -45,30 +45,30 @@ map.on('load', function() {
           data: './data/sites.geojson'
         },
         paint: {
-            'circle-radius': 8,
+            'circle-radius': 5.5,
             'circle-color': {
                 property: 'index',
                 type: 'exponential', // base defaults to 1
                 stops: [
-                    [0, '#F0F73F'],
-                    [1, '#F5DE3E'],
-                    [2, '#FBC53D'],
-                    [3, '#F9AD43'],
-                    [4, '#F79649'],
-                    [5, '#E66F5D'],
-                    [6, '#CA4A78'],
-                    [7, '#AA2D93'],
-                    [8, '#802BA4'],
-                    [9, '#4B269F'],
-                    [10, '#0F1D85']
+                    [0, '#FFFFD9'],
+                    [1, '#F6FBC5'],
+                    [2, '#EDF8B1'],
+                    [3, '#DAF0B2'],
+                    [4, '#C7E9B4'],
+                    [5, '#7FCDBB'],
+                    [6, '#41B6C4'],
+                    [7, '#1D91C0'],
+                    [8, '#225EA8'],
+                    [9, '#253494'],
+                    [10, '#081D58']
                 ]
             },
-            'circle-opacity': 0.7,
-            'circle-stroke-color': '#ffffff',
-            'circle-stroke-width': 0.5,
-            'circle-stroke-opacity': 0.8
-        }
-        //'filter': ['all', filterRCP, filterYear]    // filter for start and end year AND make sure that start year is less than 2018 (filterYear5)
+            'circle-opacity': 1,
+            'circle-stroke-color': '#999999',
+            'circle-stroke-width': 0.6,
+            'circle-stroke-opacity': 0.9
+        },
+        'filter': ['all', filterYear, filterRCP]    // filter for start and end year AND make sure that start year is less than 2018 (filterYear5)
     });
 
 });

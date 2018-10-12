@@ -3,6 +3,7 @@ body {
     padding: 0;
     font-family: 'PT Sans', Helvetica, Arial, Sans-serif;
     font-size: 12.5px;
+    max-width: 830px;
 }
 
 #map {
