@@ -25,7 +25,7 @@ var map = new mapboxgl.Map({
             "maxzoom": 22
         }]
     },
-    center: [15.5, 39],
+    center: [15.5, 40],
     zoom: 3.7,
     maxZoom: 8
 });
@@ -45,7 +45,7 @@ map.on('load', function() {
           data: './data/sites.geojson'
         },
         paint: {
-            'circle-radius': 6,
+            'circle-radius': 6.5,
             'circle-color': {
                 property: 'index',
                 type: 'exponential', // base defaults to 1
@@ -80,6 +80,50 @@ map.on('load', function() {
         map.setFilter('sites', ['all', filterYear, filterRCP]);
 
         document.getElementById('active-year').innerText = year;
+
+    });
+
+    // Create a popup, but don't add it to the map yet.
+    var popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
+    });
+
+    map.on('mouseenter', 'sites', function(e) {
+
+        // Change the cursor style as a UI indicator.
+        map.getCanvas().style.cursor = 'pointer';
+
+        var coordinates = e.features[0].geometry.coordinates.slice();
+        var name = e.features[0].properties.name;
+        var index = e.features[0].properties.index;
+        var year = e.features[0].properties.year;
+        var scenario = e.features[0].properties.scenario;
+
+
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        // Populate the popup and set its coordinates
+        // based on the feature found.
+        popup.setLngLat(coordinates)
+            .setHTML('<h3 style = "color: #7fcdbb;">' + name 
+            + '</h3><p><span class="label-title">Flooding risk index: </span>' + index 
+            + '</p><p><span class="label-title">Year: </span>' + year 
+            + '</p><p><span class="label-title">Scenario: </span>' + scenario + '</p>')
+            .addTo(map);
+
+    });
+
+    // remove popups on mouseleave
+    map.on('mouseleave', 'sites', function() {
+
+        map.getCanvas().style.cursor = '';
+        popup.remove();
 
     });
 
